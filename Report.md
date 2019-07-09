@@ -53,11 +53,12 @@ First, in this part,we need an image where the road contained straight lines, th
 ![](output_images/straight_lines2_for_perspectives.png) 
 
 Then, after using the function birdview(), we can see the road like this:
-![](output_images/straight_lines2_for_perspectives.png) 
+![](output_images/Undistorted_and_Warped_Image.png)  
 
 5. Detect lane pixels and fit to find the lane boundary.
 
 
+![](output_images/detection_of_the_lanes.png) 
 
 6. Determine the curvature of the lane and vehicle position with respect to center.
 
@@ -66,22 +67,25 @@ Then, after using the function birdview(), we can see the road like this:
 7. Warp the detected lane boundaries back onto the original image.
 
 
+![](output_images/search_around_the_lanes.png) 
 
 8. Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
 
 
-![](output_images/Undistorted_and_Warped_Image.png) 
-![](output_images/detection_of_the_lanes.png) 
-![](output_images/search_around_the_lanes.png) 
 ![](output_images/green_Area.png) 
   
   
-  
-  The most important things we had to do was, first, to modify the variables in order to have a good enderstanding of the lane line and, secondly, modify the draw_line function in order to properly draw the estimation of the lane lines.
-  At first I tried to modify the variable from the ones that were given during the course but I didn't succeed in improving the output so I stayed with the Udacity ones.
-  Then for the draw_line function, I choose to simply delete all the slope that were too close from the horizontal (which means slopes between -0.5 and 0.5) then I separate them in two parts according to the side they were in the image. After that, by taking the mean of each lines, I was able to find an estimation of the slope of each lane and an estimation of a point in that line which lead me to draw two lines approximately on the left and right lanes.
+  Finally, we use all those function to process each images of the videos and we obtain something great for the project video and.. something desastreous for the two challenge ones. Though, there are still many variables that we can tun or modifications in each steps that we can makes. We'll see that in the next part.  
 
 ### Reflexion
+
+
+
+
+
+
+
+
   Curently, the algorithm is good enough to recognize left and right lanes on verry simple environment. Though, it is still not efficient enough for the optional challenge video given at the end of the `P1.ypnb` Notebook and it is a little bit noisy.
   
   I think there at least 3 points on which we could improve the efficience of the algorithm:
