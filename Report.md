@@ -1,12 +1,7 @@
 
 
-![a](output_images/Undistorted_Image.png) <!-- .element height="50%" width="50%" -->
-![](output_images/img_test6_after_pipeline.png)
-![](output_images/straight_lines2_for_perspectives.png) 
-![](output_images/Undistorted_and_Warped_Image.png) <!-- .element height="50%" width="50%" -->
-![](output_images/detection_of_the_lanes.png) <!-- .element height="50%" width="50%" -->
-![](output_images/search_around_the_lanes.png) <!-- .element height="50%" width="50%" -->
-![](output_images/green_Area.png) <!-- .element height="50%" width="50%" -->
+
+
 
 This report come as part of the Udacity Nanodegree on Self Driving Car Engineering.
 
@@ -15,7 +10,74 @@ This report come as part of the Udacity Nanodegree on Self Driving Car Engineeri
 
 
 ### Description
-  In this project, the main part has already be given during the course. The most important things we had to do was, first, to modify the variables in order to have a good enderstanding of the lane line and, secondly, modify the draw_line function in order to properly draw the estimation of the lane lines.
+  In this project, the main part has already be seen during the course. The expectation here was to assemble the whole in an algorithm that will be able to process directly video input. In order to do so, we had to follow a certain number of steps which are the following:
+  
+* Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.
+* Apply a distortion correction to raw images.
+* Use color transforms, gradients, etc., to create a thresholded binary image.
+* Apply a perspective transform to rectify binary image ("birds-eye view").
+* Detect lane pixels and fit to find the lane boundary.
+* Determine the curvature of the lane and vehicle position with respect to center.
+* Warp the detected lane boundaries back onto the original image.
+* Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
+  
+All the code for each step of this algorithm is contained in the `P2_Notebook`. We'll go through every step one by one.
+
+1.Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.
+
+  The code for this step was given in the example file and is by consequent in the first cell of the nootebook. In this part, we take 20 images with different angulars of the same white and black chessboard and thanks to the function cv2.findChessboardCorners() from the openCV library we can find the straight line and the corners of the chessboard.
+
+2. Apply a distortion correction to raw images.
+
+  For this step, we use the cv2.calibrateCamera() function in order to find the coefficients of distortion from our camera by using in input, the ret and corners that we defined in the last step.
+  Once we've got our coefficients, we can undistort our images. In order to avoid to run this code everytime, we'll save the coefficient in a file named `wide_dist_pickle.p`.
+  
+  Here you can see a picture undistored of the chessboard :
+  ![](output_images/Undistorted_Image.png)
+
+3. Use color transforms, gradients, etc., to create a thresholded binary image.
+
+  Now, in this part, we will try to create a binary image on which we can easily distinct the lane lines. In order to do so, we'll use 3 different filters:
+  
+  - The first one will detect the edges of the images and we'll try to tun it in order to have the lane lines edge in view most of the time.
+  - The second one will be the absolute derivative on x axis of the light in the image. We are able to do this after having convert the RGB image into the HLS space(Hue, Saturation, Lightness).
+  - Finally, the last one will be a threshole on the saturation in the image.
+  
+By adding, this three filters together, we are able to obtain an image like this one:
+  ![](output_images/img_test6_after_pipeline.png)
+
+4. Apply a perspective transform to rectify binary image ("birds-eye view").
+
+First, in this part,we need an image where the road contained straight lines, then we get two points on each lines and finally we can have a top-down perspective with the function birdview() by determining four points making a rectangle.
+  In order to have my points, i decided to use the algorithm of the last project which allow us to have coordinates of points matching perfectly the lines for images with not too much noise. So with this algorithm, I define the points on the lane lines in the extremity of the purple lines and the points I need in the extremity of the green lines:
+![](output_images/straight_lines2_for_perspectives.png) 
+
+Then, after using the function birdview(), we can see the road like this:
+![](output_images/straight_lines2_for_perspectives.png) 
+
+5. Detect lane pixels and fit to find the lane boundary.
+
+
+
+6. Determine the curvature of the lane and vehicle position with respect to center.
+
+
+
+7. Warp the detected lane boundaries back onto the original image.
+
+
+
+8. Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
+
+
+![](output_images/Undistorted_and_Warped_Image.png) 
+![](output_images/detection_of_the_lanes.png) 
+![](output_images/search_around_the_lanes.png) 
+![](output_images/green_Area.png) 
+  
+  
+  
+  The most important things we had to do was, first, to modify the variables in order to have a good enderstanding of the lane line and, secondly, modify the draw_line function in order to properly draw the estimation of the lane lines.
   At first I tried to modify the variable from the ones that were given during the course but I didn't succeed in improving the output so I stayed with the Udacity ones.
   Then for the draw_line function, I choose to simply delete all the slope that were too close from the horizontal (which means slopes between -0.5 and 0.5) then I separate them in two parts according to the side they were in the image. After that, by taking the mean of each lines, I was able to find an estimation of the slope of each lane and an estimation of a point in that line which lead me to draw two lines approximately on the left and right lanes.
 
