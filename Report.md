@@ -57,20 +57,24 @@ Then, after using the function birdview(), we can see the road like this:
 
 5. Detect lane pixels and fit to find the lane boundary.
 
-
+In this part, we'll detect the lane lines pixel which is easier since we've applied our filters and we'll try to calculate the scd order polynomial curve that fit the better the lanes we found. In order to do so, we will cut the image along the y axis in nwindows blocs and then we will search in this bloc for the lanes lines in order to have many differents points from the lines before interpolating our polynomial curve. Here is the result:
 ![](output_images/detection_of_the_lanes.png) 
+
+Then if we are processing a video, the curves on two following images will be approximately the same. So, in order to gain time, we'll juste search in the nearby area of the lane lines of the last image and we'll obtain something like that:
+![](output_images/search_around_the_lanes.png) 
 
 6. Determine the curvature of the lane and vehicle position with respect to center.
 
 
 
+
+
+
+
 7. Warp the detected lane boundaries back onto the original image.
-
-
-![](output_images/search_around_the_lanes.png) 
-
 8. Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
 
+Step 7 and 8 are made in the same code cell, and the result once we've applied all the function from the precedent steps is that:
 
 ![](output_images/green_Area.png) 
   
@@ -79,7 +83,7 @@ Then, after using the function birdview(), we can see the road like this:
 
 ### Reflexion
 
-
+babebibobuby
 
 
 
