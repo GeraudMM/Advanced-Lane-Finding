@@ -1,8 +1,3 @@
-
-
-
-
-
 This report come as part of the Udacity Nanodegree on Self Driving Car Engineering.
 
 ### Introduction
@@ -79,17 +74,12 @@ Step 7 and 8 are made in the same code cell, and the result once we've applied a
 
 ### Reflexion
 
-babebibobuby
+  Now that the algorithm effectively works for simple road tracks, we have to improve it in order to make it more robust and to be able to detect the lane lines much more easily.
+
+  I think there at least 2 main points on which we could improve the efficience of the algorithm:
+
+- At first, of course we could still try to optimize the variables of the image manipulation (pipeline function). In order to do so, as explain in the Udacity course, we could create a simple interface to modify each value in real time in order to gain time.
+- Then we should try to improve the algorithm for lane finding. For example, we could train a simple neural network to recognize the lanes after the image have been processing. Once this one will be well trained, it should also require less processor to run.
 
 
-
-
-
-
-  Curently, the algorithm is good enough to recognize left and right lanes on verry simple environment. Though, it is still not efficient enough for the optional challenge video given at the end of the `P1.ypnb` Notebook and it is a little bit noisy.
-  
-  I think there at least 3 points on which we could improve the efficience of the algorithm:
-  
-- At first, of course we could still try to optimize the variables of the image manipulation (kernel_size, low_threshold, high_threshold, rho, min_line_length, etc). In order to do so, as explain in the Udacity course, we could create a simple interface to modify each value in real time in order to gain time.
-- Then, in the algorithm, I choose to separate the lines from the left side to the ones from the right side. To improve that at first, we should maybe try to have a better separation between the lines for the left lane and those for the right lane. In fact, now if the road turn too much, the algorithm won't be able to have a good understanding of the images. Then we could delete the lines with absurd slopes in comparison to the slope mean of all the lines of the left or right lane.
-- Finally, we could add a time continuity (taking into account the previous position of the lanes) to cancel the noise on the position of our lane lines and avoid anny absurdity which could occur time to time.
+Finally, it would be usefull to try to reduce the complexity of the algorithm in order to speed the time needed to process one image. In did, this algorithm is suppose to work in live and by consequent need to be able to process an image in at least less than 40ms. Of course, it depends of the processor but we still will have many other calcul to do sideway.
