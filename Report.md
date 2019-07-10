@@ -64,11 +64,7 @@ Then if we are processing a video, the curves on two following images will be ap
 ![](output_images/search_around_the_lanes.png) 
 
 6. Determine the curvature of the lane and vehicle position with respect to center.
-
-
-
-
-
+ Here, we define the value in meters for one pixel on x and y axes and then we calculate the average curvature of the two lines at the bottom of the image with the function mesure_curvature(). We also mesure the distance of the car from the center of the road. To do so, we suppose that the camera is in the middle of the car even if it seems to have an offset of 20 or 30cm. Now we can display this two figures on the video while processing it.
 
 
 7. Warp the detected lane boundaries back onto the original image.
