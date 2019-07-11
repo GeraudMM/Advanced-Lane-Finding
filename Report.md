@@ -27,7 +27,8 @@ The code for this step has been given in the sample file and is therefore in the
 For this step, we use the function cv2.calibrateCamera() to find the distortion coefficients of our camera using the input, ret and corners that we defined in the last step.
 Once we have our coefficients, we can distort our images. In order to avoid executing this code each time, we will save the coefficient in a file named `wide_dist_pickle.p`.
   
-Here you can see a picture undistored of the chessboard :
+Here you can see the original picture of the chessboard and then the same one but undistored :
+  ![](output_images/original.png)
   ![](output_images/Undistorted_Image.png)
 
 3. Use color transforms, gradients, etc., to create a thresholded binary image.
