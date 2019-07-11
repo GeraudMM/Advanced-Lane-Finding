@@ -26,7 +26,7 @@ A browser window will appear showing the contents of the current directory.  Cli
 ### Instruction
 Follow the instruction in the `P2.ipynb` notebook to watch and/or improve the visual recognition algorithm. 
 Check also the `Report.md` for explaination on the algorithm.
-
+Go to the `test_video_output` to watch the entire video processed
 
 
 
