@@ -29,7 +29,6 @@ Once we have our coefficients, we can distort our images. In order to avoid exec
   
 Here you can see the original picture of the chessboard and then the same one but undistored :
   ![](output_images/original.png)
-  ![](output_images/Undistorted_Image.png)
 
 3. Use color transforms, gradients, etc., to create a thresholded binary image.
 
