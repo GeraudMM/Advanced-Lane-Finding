@@ -1,4 +1,4 @@
-[image1]: project_video.gif "Trained Agent"
+[image1]: output.gif "Trained Agent"
 
 
 # **Advanced-Lane-Finding** 
