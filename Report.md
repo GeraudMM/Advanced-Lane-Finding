@@ -32,11 +32,12 @@ Here you can see the original picture of the chessboard and then the same one bu
 
 3. Use color transforms, gradients, etc., to create a thresholded binary image.
 
-Now, in this part, we will try to create a binary image on which we can easily distinct the lane lines. In order to do so, we'll use 3 different filters:
+Now, in this part, we will try to create a binary image on which we can easily distinct the lane lines. In order to do so, we'll use 4 different filters:
   
   - The first one will detect the edges of the images and we will try to tune it in order to have the edges of the lane lines in sight most of the time.
   - The second will be the absolute derivative on the x-axis of the light in the image. We can do this after converting the RGB image into the HLS space (Hue, Saturation, Brightness).
-  - Finally, the last one will be a threshold on the saturation of the image.
+  - The third one will be a threshold on the light of the image.
+  - And the last one will be a threshold on the third axe of the image in the CIELAB color space.
 
 Translated with www.DeepL.com/Translator
   
